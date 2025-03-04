@@ -4,6 +4,7 @@ import cn from 'classnames';
 import Icon from '../Icon/Icon';
 import { SelectDatesType } from '@/types/selectDatesType';
 import dayjs from 'dayjs';
+import customParseFormat from 'dayjs/plugin/customParseFormat'; // Импортируйте плагин
 import { DatesType } from '@/types/datesType';
 import isoWeek from 'dayjs/plugin/isoWeek';
 import { useOutsideClick } from '@/utils/useOutsideClick';
@@ -15,7 +16,7 @@ interface SelectDatesProps {
   onChange: (value: SelectDatesType) => void;
   }
 dayjs.extend(isoWeek);
-
+dayjs.extend(customParseFormat);
 const SelectDates: React.FC<SelectDatesProps> = ({ placeholder, defaultValue, onChange }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedValue, setSelectedValue] = useState<SelectDatesType | undefined>(defaultValue);

@@ -3,10 +3,10 @@ import { DateRange } from 'react-date-range';
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 import dayjs from 'dayjs';
+import ru from 'date-fns/locale/ru';
 import { IMaskInput } from 'react-imask';
 import styles from './DateInput.module.scss';
 import Icon from '../Icon/Icon';
-import ru from 'date-fns/locale/ru';
 
 interface DateInputProps {
   onChange: (startDate: string, endDate: string) => void;
@@ -31,13 +31,15 @@ const DateInput: React.FC<DateInputProps> = ({ defaultValue, onChange }) => {
       setError('Некорректный формат даты. Используйте DD.MM.YYYY');
       return false;
     }
-
-    const isValid = dayjs(value, 'DD.MM.YYYY').isValid();
+    const [day, month, year] = value.split('.');
+    const date = new Date(`${year}-${month}-${day}`);    
+    const isValid = date.getFullYear() === parseInt(year, 10) &&
+                    date.getMonth() + 1 === parseInt(month, 10) &&
+                    date.getDate() === parseInt(day, 10);
     if (!isValid) {
       setError('Некорректная дата');
       return false;
     }
-
     setError('');
     return true;
   };
@@ -77,7 +79,6 @@ const DateInput: React.FC<DateInputProps> = ({ defaultValue, onChange }) => {
   const handleCalendarClose = () => {
     const formattedStartDate = dayjs(tempDateRange.startDate).format('DD.MM.YYYY');
     const formattedEndDate = dayjs(tempDateRange.endDate).format('DD.MM.YYYY');
-  
     if (validateDate(formattedStartDate) && validateDate(formattedEndDate)) {
       if (validateDateRange(formattedStartDate, formattedEndDate)) {
         setDateRange({ startDate: formattedStartDate, endDate: formattedEndDate });
