@@ -1,0 +1,37 @@
+ .table_body_row {
+     padding: 0 40px;
+     cursor: pointer;
+     &:hover {
+         background: #D4DFF32B;
+     }
+ }
+ .table_body_wrapper {
+    height: 65px;
+    display: grid;
+    grid-template-columns: 54px 88px 129px 325px 214px 1fr 352px;
+    align-items: center;
+    border-top: 1px solid #EAF0FA;
+ }
+
+ .table_body_col {
+     font-weight: 400;
+     font-size: 15px;
+     line-height: 21px;
+     letter-spacing: 0%;
+     text-overflow: ellipsis;
+     white-space: nowrap;
+     text-align: left;
+
+     &:last-child {
+         text-align: right;
+     }
+
+     a {
+         color: #5E7793;
+         text-decoration: none;
+     }
+
+     img {
+         object-fit: contain;
+     }
+ }

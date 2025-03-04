@@ -1,0 +1,34 @@
+.error {
+    font-size: 14px;
+    line-height: 19.6px;
+    color: #EA1A4F;
+}
+.gradeCall {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 14px;
+    height: 26px;
+    width: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 8px;
+    border: 1px solid;
+    border-radius: 4px;
+    box-sizing: border-box;
+    &.bad {
+        background-color: #FEE9EF;
+        color: #EA1A4F;
+        border-color: #EA1A4F;
+    }
+    &.well {
+        background-color: #D8E4FB;
+        color: #122945;
+        border-color: #ADBFDF;
+    }
+    &.great {
+        background-color: #DBF8EF;
+        color: #00A775;
+        border-color: #28A879;
+    }
+}

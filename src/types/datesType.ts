@@ -1,0 +1,1 @@
+export type DatesType = 'days' | 'week' | 'month' | 'year' | 'custom';
